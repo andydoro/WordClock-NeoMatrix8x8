@@ -17,17 +17,15 @@ Wiring:
  - Solder NeoMatrix 5V to Trinket 5V, GND to GND, DIN to Trinket Pro pin 8.
  
  
- Construction:
+Construction:
 
  - NeoMatrix goes behind the faceplate. Mount Trinket Pro inside enclosure.
  
  
  The effect will be a word clock but using the RGB LEDs for a color shift effect.
  
- 
+grid pattern:
  ```
- grid pattern
-
  A T W E N T Y D
  Q U A R T E R Y
  F I V E H A L F
