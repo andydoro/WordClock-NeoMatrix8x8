@@ -8,6 +8,15 @@ Hardware:
  - DS1307 RTC breakout
  - NeoPixel NeoMatrix 8x8
  - 3D print of faceplate & enclosure
+ 
+Software:
+ 
+This code requires the following libraries:
+ 
+ - RTClib https://github.com/adafruit/RTClib
+ - Adafruit_GFX https://github.com/adafruit/Adafruit-GFX-Library
+ - Adafruit_NeoPixel https://github.com/adafruit/Adafruit_NeoPixel
+ - Adafruit_NeoMatrix https://github.com/adafruit/Adafruit_NeoMatrix
 
 
 Wiring:
