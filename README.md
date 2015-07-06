@@ -46,6 +46,6 @@ grid pattern:
  ```
  
 Acknowledgements:
-  - Thanks Dano for faceplate / 3D models & project inspiration!
+  - Thanks Dano for faceplate / 3D models & project inspiration! https://github.com/danowall
  
 
