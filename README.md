@@ -31,7 +31,7 @@ Construction:
  - NeoMatrix goes behind the faceplate. Mount Trinket Pro inside enclosure.
  
  
- The effect will be a word clock but using the RGB LEDs for a color shift effect.
+ The effect will be a word clock using the RGB LEDs for a color shift effect.
  
 grid pattern:
  ```
