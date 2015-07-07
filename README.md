@@ -4,10 +4,10 @@
  
 Hardware:
  
- - Trinket Pro 5V (should work with other Arduino-compatibles with minor modifications)
- - DS1307 RTC breakout
- - NeoPixel NeoMatrix 8x8
- - 3D print of faceplate & enclosure
+ - Trinket Pro 5V (should work with other Arduino-compatibles with minor modifications) https://www.adafruit.com/product/2000
+ - DS1307 RTC breakout https://www.adafruit.com/products/264
+ - NeoPixel NeoMatrix 8x8 https://www.adafruit.com/products/1487
+ - laser cut faceplate & enclosure
  
 Software:
  
