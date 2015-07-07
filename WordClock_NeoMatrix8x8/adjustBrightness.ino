@@ -4,11 +4,11 @@
 void adjustBrightness() {
 
   // get time from the RTC
-  DateTime time = RTC.now();
+  DateTime thetime = RTC.now();
 
 
   //change brightness if it's night time
-  if (time.hour() < MORNINGCUTOFF || time.hour() > NIGHTCUTOFF) {
+  if (thetime.hour() < MORNINGCUTOFF || thetime.hour() > NIGHTCUTOFF) {
     matrix.setBrightness(NIGHTBRIGHTNESS);
   } else {
     matrix.setBrightness(DAYBRIGHTNESS);

@@ -42,7 +42,6 @@ This code requires the following libraries:
  Acknowledgements:
   - Thanks Dano for faceplate / 3D models & project inspiration!
  
- 
  */
 
 
@@ -98,12 +97,12 @@ unsigned long bottomMask;
 
 
 // define delays
-#define FLASHDELAY 300  // delay for startup "flashWords" sequence
+#define FLASHDELAY 250  // delay for startup "flashWords" sequence
 #define SHIFTDELAY 100   // controls color shifting speed
 
 
 RTC_DS1307 RTC; // Establish clock object
-DateTime time; // Holds current clock time
+DateTime thetime; // Holds current clock time
 
 int j;   // an integer for the color shifting effect
 
@@ -153,8 +152,8 @@ void setup() {
 
   matrix.begin();
   matrix.setBrightness(DAYBRIGHTNESS);
-  matrix.fillScreen(0);
-  matrix.show(); // Initialize all pixels to 'off'
+  matrix.fillScreen(0); // Initialize all pixels to 'off'
+  matrix.show(); 
   
   // startup sequence... do colorwipe?
   //delay(500);

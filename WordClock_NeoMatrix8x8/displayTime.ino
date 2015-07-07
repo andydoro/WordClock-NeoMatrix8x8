@@ -4,75 +4,75 @@
 void displayTime(void) {
 
   // get time from the RTC
-  DateTime time = RTC.now();
+  DateTime thetime = RTC.now();
 
   // serial print current time
   /*
-  Serial.print(time.year(), DEC);
+  Serial.print(thetime.year(), DEC);
   Serial.print('/');
-  Serial.print(time.month(), DEC);
+  Serial.print(thetime.month(), DEC);
   Serial.print('/');
-  Serial.print(time.day(), DEC);
+  Serial.print(thetime.day(), DEC);
   Serial.print(' ');
-  Serial.print(time.hour(), DEC);
+  Serial.print(thetime.hour(), DEC);
   Serial.print(':');
-  Serial.print(time.minute(), DEC);
+  Serial.print(thetime.minute(), DEC);
   Serial.print(':');
-  Serial.print(time.second(), DEC);
+  Serial.print(thetime.second(), DEC);
   Serial.println();
   */
 
-  // time we display the appropriate time.minute() counter
-  if ((time.minute() > 4) && (time.minute() < 10)) {
+  // time we display the appropriate thetime.minute() counter
+  if ((thetime.minute() > 4) && (thetime.minute() < 10)) {
     MFIVE;
     //Serial.print("five");
   }
-  if ((time.minute() > 9) && (time.minute() < 15)) {
+  if ((thetime.minute() > 9) && (thetime.minute() < 15)) {
     MTEN;
     //Serial.print("ten");
   }
-  if ((time.minute() > 14) && (time.minute() < 20)) {
+  if ((thetime.minute() > 14) && (thetime.minute() < 20)) {
     AQUARTER;
     //Serial.print("a quarter");
   }
-  if ((time.minute() > 19) && (time.minute() < 25)) {
+  if ((thetime.minute() > 19) && (thetime.minute() < 25)) {
     TWENTY;
     //Serial.print("twenty");
   }
-  if ((time.minute() > 24) && (time.minute() < 30)) {
+  if ((thetime.minute() > 24) && (thetime.minute() < 30)) {
     TWENTY;
     MFIVE;
     //Serial.print("twenty five");
   }
-  if ((time.minute() > 29) && (time.minute() < 35)) {
+  if ((thetime.minute() > 29) && (thetime.minute() < 35)) {
     HALF;
     //Serial.print("half");
   }
-  if ((time.minute() > 34) && (time.minute() < 40)) {
+  if ((thetime.minute() > 34) && (thetime.minute() < 40)) {
     TWENTY;
     MFIVE;
     //Serial.print("twenty five");
   }
-  if ((time.minute() > 39) && (time.minute() < 45)) {
+  if ((thetime.minute() > 39) && (thetime.minute() < 45)) {
     TWENTY;
     //Serial.print("twenty");
   }
-  if ((time.minute() > 44) && (time.minute() < 50)) {
+  if ((thetime.minute() > 44) && (thetime.minute() < 50)) {
     AQUARTER;
     //Serial.print("a quarter");
   }
-  if ((time.minute() > 49) && (time.minute() < 55)) {
+  if ((thetime.minute() > 49) && (thetime.minute() < 55)) {
     MTEN;
     //Serial.print("ten");
   }
-  if (time.minute() > 54) {
+  if (thetime.minute() > 54) {
     MFIVE;
     //Serial.print("five");
   }
 
-  if ((time.minute() < 5))
+  if ((thetime.minute() < 5))
   {
-    switch (time.hour()) {
+    switch (thetime.hour()) {
       case 1:
       case 13:
         ONE;
@@ -124,11 +124,11 @@ void displayTime(void) {
     }
 
   }
-  else if ((time.minute() < 35) && (time.minute() > 4))
+  else if ((thetime.minute() < 35) && (thetime.minute() > 4))
   {
     PAST;
     //Serial.print(" past ");
-    switch (time.hour()) {
+    switch (thetime.hour()) {
       case 1:
       case 13:
         ONE;
@@ -185,7 +185,7 @@ void displayTime(void) {
     // the next hour, as we will be displaying a 'to' sign
     TO;
     //Serial.print(" to ");
-    switch (time.hour()) {
+    switch (thetime.hour()) {
       case 1:
       case 13:
         TWO;
