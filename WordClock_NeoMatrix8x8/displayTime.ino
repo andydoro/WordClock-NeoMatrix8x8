@@ -23,10 +23,6 @@ void displayTime(void) {
   Serial.print(time.second(), DEC);
   Serial.println();
   */
-  // turn everything off
-  //matrix.fillScreen(0);
-  //topMask = 0;
-  //bottomMask = 0;
 
   // time we display the appropriate time.minute() counter
   if ((time.minute() > 4) && (time.minute() < 10)) {

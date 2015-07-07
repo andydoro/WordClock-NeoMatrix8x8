@@ -89,7 +89,7 @@ unsigned long bottomMask;
 
 // define delays
 #define FLASHDELAY 300  // delay for startup "flashWords" sequence
-#define CLOCKDELAY 50   // controls color shifting speed
+#define SHIFTDELAY 100   // controls color shifting speed
 
 
 RTC_DS1307 RTC; // Establish clock object
@@ -162,7 +162,6 @@ void loop() {
   
   //mode_moon(); // uncomment to show moon mode instead!
 
-  delay(CLOCKDELAY); // don't update too often?
   
 }
 

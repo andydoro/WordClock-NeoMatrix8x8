@@ -26,6 +26,7 @@ void applyMask() {
     }
   }
   matrix.show(); // show it!
+  delay(SHIFTDELAY);
   j++; // move the colors forward
   j = j % (256 * 5);
   
