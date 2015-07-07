@@ -8,15 +8,25 @@
  - DS1307 RTC breakout
  - NeoPixel NeoMatrix 8x8
 
+
+Software:
+
+This code requires the following libraries:
+
+ - RTClib https://github.com/adafruit/RTClib
+ - Adafruit_GFX https://github.com/adafruit/Adafruit-GFX-Library
+ - Adafruit_NeoPixel https://github.com/adafruit/Adafruit_NeoPixel
+ - Adafruit_NeoMatrix https://github.com/adafruit/Adafruit_NeoMatrix
+
+
  Wiring:
  - Solder DS1307 breakout to Trinket Pro, A2 to GND, A3 to PWR, A4 to SDA, A5 to SCL
    If you leave off / clip the unused SQW pin on the RTC breakout, the breakout can sit right on top of the Trinket Pro for a compact design! It'll be difficult to reach the Trinket Pro reset button, but you can activate the bootloader by plugging in the USB.
  - Solder NeoMatrix 5V to Trinket 5V, GND to GND, DIN to Trinket Pro pin 8.
  
- 
- The effect will be a word clock but using the RGB LEDs for a color shift effect.
- 
 
+ Aword clock using NeoPixel RGB LEDs for a color shift effect.
+ 
  grid pattern
 
  A T W E N T Y D
@@ -143,15 +153,15 @@ void setup() {
 
   matrix.begin();
   matrix.setBrightness(DAYBRIGHTNESS);
+  matrix.fillScreen(0);
   matrix.show(); // Initialize all pixels to 'off'
   
   // startup sequence... do colorwipe?
-  delay(500);
+  //delay(500);
   //rainbowCycle(20);
   delay(500);
-  flashWords();
+  flashWords(); // briefly flash each word in sequence 
   delay(500);
-
 }
 
 void loop() {

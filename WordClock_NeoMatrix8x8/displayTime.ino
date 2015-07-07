@@ -6,8 +6,6 @@ void displayTime(void) {
   // get time from the RTC
   DateTime time = RTC.now();
 
-
-  //DateTime time;
   // serial print current time
   /*
   Serial.print(time.year(), DEC);
@@ -124,7 +122,7 @@ void displayTime(void) {
         TWELVE;
         break;
     }
-    //OCLOCK;
+
   }
   else if ((time.minute() < 35) && (time.minute() > 4))
   {
@@ -238,7 +236,7 @@ void displayTime(void) {
         break;
     }
   }
-  applyMask(); // apply phrase mask to colorshift function 
+  applyMask(); // apply phrase mask to colorshift function
 
 }
 
