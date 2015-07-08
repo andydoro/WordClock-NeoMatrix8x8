@@ -2,6 +2,11 @@
 ================
  by Andy Doro & Dano Wall
  
+
+A word clock which uses NeoPixel RGB LEDs for a color shifting effect.
+
+For more information, follow this guide: https://learn.adafruit.com/neomatrix-8x8-word-clock/
+
 Hardware:
  
  - Trinket Pro 5V (should work with other Arduino-compatibles with minor modifications) https://www.adafruit.com/product/2000
@@ -25,14 +30,7 @@ Wiring:
    If you leave off / clip the unused SQW pin on the RTC breakout, the breakout can sit right on top of the Trinket Pro for a compact design! It'll be difficult to reach the Trinket Pro reset button, but you can activate the bootloader by plugging in the USB.
  - Solder NeoMatrix 5V to Trinket 5V, GND to GND, DIN to Trinket Pro pin 8.
  
- 
-Construction:
 
- - NeoMatrix goes behind the faceplate. Mount Trinket Pro inside enclosure.
- 
- 
- The effect will be a word clock using the RGB LEDs for a color shift effect.
- 
 grid pattern:
  ```
  A T W E N T Y D
