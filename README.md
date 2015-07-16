@@ -2,6 +2,7 @@
 ================
  by Andy Doro & Dano Wall
  
+http://andydoro.com/ 
 
 A word clock which uses NeoPixel RGB LEDs for a color shifting effect.
 
