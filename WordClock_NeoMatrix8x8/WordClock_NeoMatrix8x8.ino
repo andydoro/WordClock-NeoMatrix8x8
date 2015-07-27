@@ -101,6 +101,10 @@ unsigned long bottomMask;
 #define SHIFTDELAY 100   // controls color shifting speed
 
 
+// if you want to just run the clock monochrome
+#define WHITE 200, 255, 255
+
+
 RTC_DS1307 RTC; // Establish clock object
 DateTime thetime; // Holds current clock time
 
@@ -121,7 +125,7 @@ Adafruit_NeoMatrix matrix = Adafruit_NeoMatrix(8, 8, NEOPIN,
                             NEO_MATRIX_TOP  + NEO_MATRIX_LEFT +
                             NEO_MATRIX_ROWS + NEO_MATRIX_PROGRESSIVE,
                             NEO_GRB         + NEO_KHZ800);
-                            
+                           
 
 void setup() {
   // put your setup code here, to run once:

@@ -2,7 +2,7 @@
 // show colorshift through the phrase mask. for each NeoPixel either show a color or show nothing!
 void applyMask() {
   // top mask
-  for (byte i = 0; i < 32; i++) { 
+  for (byte i = 0; i < 32; i++) {
     boolean mask = bitRead(topMask, 31 - i); // bitread is backwards because bitRead reads rightmost digits first. could have defined the word masks differently to avoid this but whatever.
     switch (mask) {
       case 0:
@@ -10,6 +10,7 @@ void applyMask() {
         break;
       case 1:
         matrix.setPixelColor(i, draw565to32(Wheel(((i * 256 / matrix.numPixels()) + j) & 255)));
+        //matrix.setPixelColor(i, WHITE);
         break;
     }
   }
@@ -22,6 +23,7 @@ void applyMask() {
         break;
       case 1:
         matrix.setPixelColor(i, draw565to32(Wheel(((i * 256 / matrix.numPixels()) + j) & 255)));
+        //matrix.setPixelColor(i, WHITE);
         break;
     }
   }
@@ -29,7 +31,7 @@ void applyMask() {
   delay(SHIFTDELAY);
   j++; // move the colors forward
   j = j % (256 * 5);
-  
+
   // reset masks for next time
   topMask = 0;
   bottomMask = 0;
