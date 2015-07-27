@@ -88,8 +88,8 @@ unsigned long bottomMask;
 
 
 // brightness based on time of day- could try warmer colors at night?
-#define DAYBRIGHTNESS 40
-#define NIGHTBRIGHTNESS 20
+#define DAYBRIGHTNESS 80
+#define NIGHTBRIGHTNESS 40
 
 // cutoff times for day / night brightness. feel free to modify.
 #define MORNINGCUTOFF 7  // when does daybrightness begin?   7am
