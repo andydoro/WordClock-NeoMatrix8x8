@@ -1,9 +1,9 @@
 /*
  WORD CLOCK - 8x8 NeoPixel Desktop Edition
  by Andy Doro
- 
+
  Hardware:
- 
+
  - Trinket Pro 5V (should work with other Arduino-compatibles with minor modifications)
  - DS1307 RTC breakout
  - NeoPixel NeoMatrix 8x8
@@ -23,10 +23,10 @@ This code requires the following libraries:
  - Solder DS1307 breakout to Trinket Pro, A2 to GND, A3 to PWR, A4 to SDA, A5 to SCL
    If you leave off / clip the unused SQW pin on the RTC breakout, the breakout can sit right on top of the Trinket Pro for a compact design! It'll be difficult to reach the Trinket Pro reset button, but you can activate the bootloader by plugging in the USB.
  - Solder NeoMatrix 5V to Trinket 5V, GND to GND, DIN to Trinket Pro pin 8.
- 
+
 
  Aword clock using NeoPixel RGB LEDs for a color shift effect.
- 
+
  grid pattern
 
  A T W E N T Y D
@@ -37,11 +37,11 @@ This code requires the following libraries:
  S I X T H R E E
  T W E L E V E N
  F O U R N I N E
- 
- 
+
+
  Acknowledgements:
   - Thanks Dano for faceplate / 3D models & project inspiration!
- 
+
  */
 
 
@@ -88,8 +88,8 @@ unsigned long bottomMask;
 
 
 // brightness based on time of day- could try warmer colors at night?
-#define DAYBRIGHTNESS 80
-#define NIGHTBRIGHTNESS 40
+#define DAYBRIGHTNESS 40
+#define NIGHTBRIGHTNESS 20
 
 // cutoff times for day / night brightness. feel free to modify.
 #define MORNINGCUTOFF 7  // when does daybrightness begin?   7am
@@ -101,12 +101,8 @@ unsigned long bottomMask;
 #define SHIFTDELAY 100   // controls color shifting speed
 
 
-// if you want to just run the clock monochrome
-#define WHITE 200, 255, 255
-
-
 RTC_DS1307 RTC; // Establish clock object
-DateTime thetime; // Holds current clock time
+DateTime theTime; // Holds current clock time
 
 int j;   // an integer for the color shifting effect
 
@@ -125,11 +121,11 @@ Adafruit_NeoMatrix matrix = Adafruit_NeoMatrix(8, 8, NEOPIN,
                             NEO_MATRIX_TOP  + NEO_MATRIX_LEFT +
                             NEO_MATRIX_ROWS + NEO_MATRIX_PROGRESSIVE,
                             NEO_GRB         + NEO_KHZ800);
-                           
+
 
 void setup() {
   // put your setup code here, to run once:
-  
+
   //Serial for debugging
   //Serial.begin(9600);
 
@@ -152,18 +148,24 @@ void setup() {
     //Serial.println("RTC is NOT running!");
     // following line sets the RTC to the date & time this sketch was compiled
     RTC.adjust(DateTime(__DATE__, __TIME__));
+    // add 2.5 minutes to get better estimates
+    theTime = RTC.now();
+    theTime = theTime.unixtime() + 150;
+    // DST? if we're in it, let's subtract from the computer time to keep our DST calculation correct. otherwise, comment this out!
+    theTime = theTime.unixtime() - 3600;
+    RTC.adjust(theTime);
   }
 
   matrix.begin();
   matrix.setBrightness(DAYBRIGHTNESS);
   matrix.fillScreen(0); // Initialize all pixels to 'off'
-  matrix.show(); 
-  
+  matrix.show();
+
   // startup sequence... do colorwipe?
   //delay(500);
   //rainbowCycle(20);
   delay(500);
-  flashWords(); // briefly flash each word in sequence 
+  flashWords(); // briefly flash each word in sequence
   delay(500);
 }
 
@@ -172,10 +174,10 @@ void loop() {
 
   adjustBrightness();
   displayTime();
-  
+
   //mode_moon(); // uncomment to show moon mode instead!
 
-  
+
 }
 
 
