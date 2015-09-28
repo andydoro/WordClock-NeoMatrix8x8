@@ -60,26 +60,26 @@ unsigned long bottomMask;
 
 // define masks for each word. we add them with "bitwise or" to generate a mask for the entire "phrase".
 // have to use two different 32-bits numbers, luckily none of the words are spread across top and bottom halves of the NeoMatrix.
-#define MFIVE topMask |= 0xF000        // these are in hexadecimal
-#define MTEN topMask |= 0x58000000
-#define AQUARTER topMask |= 0x80FE0000
-#define TWENTY topMask |= 0x7E000000
-#define HALF topMask |= 0xF00
-#define PAST topMask |= 0x78
-#define TO topMask |= 0xC
-#define ONE bottomMask |= 0x43
-#define TWO bottomMask |= 0xC040
-#define THREE bottomMask |= 0x1F0000
-#define FOUR bottomMask |= 0xF0
-#define FIVE bottomMask |= 0xF0000000
-#define SIX bottomMask |= 0xE00000
-#define SEVEN bottomMask |= 0x800F00
-#define EIGHT bottomMask |= 0x1F000000
-#define NINE bottomMask |= 0xF
-#define TEN bottomMask |= 0x1010100
+#define MFIVE     topMask |= 0xF000        // these are in hexadecimal
+#define MTEN      topMask |= 0x58000000
+#define AQUARTER  topMask |= 0x80FE0000
+#define TWENTY    topMask |= 0x7E000000
+#define HALF      topMask |= 0xF00
+#define PAST      topMask |= 0x78
+#define TO        topMask |= 0xC
+#define ONE    bottomMask |= 0x43
+#define TWO    bottomMask |= 0xC040
+#define THREE  bottomMask |= 0x1F0000
+#define FOUR   bottomMask |= 0xF0
+#define FIVE   bottomMask |= 0xF0000000
+#define SIX    bottomMask |= 0xE00000
+#define SEVEN  bottomMask |= 0x800F00
+#define EIGHT  bottomMask |= 0x1F000000
+#define NINE   bottomMask |= 0xF
+#define TEN    bottomMask |= 0x1010100
 #define ELEVEN bottomMask |= 0x3F00
 #define TWELVE bottomMask |= 0xF600
-#define ANDYDORO topMask |= 0x89010087
+#define ANDYDORO  topMask |= 0x89010087
 
 // define pins
 #define NEOPIN 8  // connect to DIN on NeoMatrix 8x8
