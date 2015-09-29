@@ -8,53 +8,56 @@
  *  between the second Sunday in March and the first Sunday in November. The rules for DST vary by country and territory.
  *  https://en.wikipedia.org/wiki/Daylight_saving_time_by_country
  *
- *  If you're in a territory which observes DST differently this code will need to be modified. If you're lucky enough to not observe DST 
+ *  If you're in a territory which observes DST differently this code will need to be modified. If you're lucky enough to not observe DST
  *  then much of this code can be commented out!
  *
  *  This method doesn't check whether its 2am or not when the time change officially occurs. This could be more accurate at the expense of being more complicated.
- *  
+ *
  */
 
 DateTime calcTheTime() {
 
   DateTime RTCTime = RTC.now();
 
-  byte DoW = day_of_week(RTCTime.year(), RTCTime.month(), RTCTime.day()); //Get the day of the week. 0 = Sunday, 6 = Saturday
-  int previousSunday = RTCTime.day() - DoW;
+  if (OBSERVEDST == 1) {
 
-  boolean dst = false; //Assume we're not in DST
-  if (RTCTime.month() > 3 && RTCTime.month() < 11) dst = true; //DST is happening!
+    byte DoW = day_of_week(RTCTime.year(), RTCTime.month(), RTCTime.day()); //Get the day of the week. 0 = Sunday, 6 = Saturday
+    int previousSunday = RTCTime.day() - DoW;
 
-  //In March, we are DST if our previous Sunday was on or after the 8th.
-  if (RTCTime.month() == 3)
-  {
-    if (previousSunday >= 8) dst = true;
+    boolean dst = false; //Assume we're not in DST
+    if (RTCTime.month() > 3 && RTCTime.month() < 11) dst = true; //DST is happening!
+
+    //In March, we are DST if our previous Sunday was on or after the 8th.
+    if (RTCTime.month() == 3)
+    {
+      if (previousSunday >= 8) dst = true;
+    }
+    //In November we must be before the first Sunday to be dst.
+    //That means the previous Sunday must be before the 1st.
+    if (RTCTime.month() == 11)
+    {
+      if (previousSunday <= 0) dst = true;
+    }
+
+    if (dst == true) {
+      RTCTime = RTCTime.unixtime() + 3600;  // add 1 hour or 3600 seconds to the time
+    }
   }
-  //In November we must be before the first Sunday to be dst.
-  //That means the previous Sunday must be before the 1st.
-  if (RTCTime.month() == 11)
-  {
-    if (previousSunday <= 0) dst = true;
-  }
 
-  if (dst == true) {
-    theTime = RTCTime.unixtime() + 3600;  // add 1 hour or 3600 seconds to the time
-  }
-
-  Serial.print(theTime.year(), DEC);
+  Serial.print(RTCTime.year(), DEC);
   Serial.print('/');
-  Serial.print(theTime.month(), DEC);
+  Serial.print(RTCTime.month(), DEC);
   Serial.print('/');
-  Serial.print(theTime.day(), DEC);
+  Serial.print(RTCTime.day(), DEC);
   Serial.print(' ');
-  Serial.print(theTime.hour(), DEC);
+  Serial.print(RTCTime.hour(), DEC);
   Serial.print(':');
-  Serial.print(theTime.minute(), DEC);
+  Serial.print(RTCTime.minute(), DEC);
   Serial.print(':');
-  Serial.print(theTime.second(), DEC);
+  Serial.print(RTCTime.second(), DEC);
   Serial.println();
 
-  return theTime;
+  return RTCTime;
 }
 
 

@@ -106,6 +106,12 @@ DateTime theTime; // Holds current clock time
 
 int j;   // an integer for the color shifting effect
 
+// Do you live in a country or territory that observes Daylight Saving Time? 
+// https://en.wikipedia.org/wiki/Daylight_saving_time_by_country
+// Use 1 if you observe DST, 0 if you don't. This is programmed for DST in the US / Canada. If your territory's DST operates differently, 
+// you'll need to modify the code in the calcTheTime() function to make this work properly.
+#define OBSERVEDST 1
+
 
 // Parameter 1 = number of pixels in strip
 // Parameter 2 = Arduino pin number (most are valid)
