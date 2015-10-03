@@ -9,7 +9,7 @@ void applyMask() {
         matrix.setPixelColor(i, 0, 0, 0);
         break;
       case 1:
-        matrix.setPixelColor(i, draw565to32(Wheel(((i * 256 / matrix.numPixels()) + j) & 255)));
+        matrix.setPixelColor(i, Wheel(((i * 256 / matrix.numPixels()) + j) & 255));
         //matrix.setPixelColor(i, WHITE);
         break;
     }
@@ -22,7 +22,7 @@ void applyMask() {
         matrix.setPixelColor(i, 0, 0, 0);
         break;
       case 1:
-        matrix.setPixelColor(i, draw565to32(Wheel(((i * 256 / matrix.numPixels()) + j) & 255)));
+        matrix.setPixelColor(i, Wheel(((i * 256 / matrix.numPixels()) + j) & 255));
         //matrix.setPixelColor(i, WHITE);
         break;
     }
@@ -41,15 +41,26 @@ void applyMask() {
 // The colours are a transition r - g - b - back to r.
 uint32_t Wheel(byte WheelPos) {
   WheelPos = 255 - WheelPos;
+
+  uint32_t wheelColor;
   if (WheelPos < 85) {
-    return matrix.Color(255 - WheelPos * 3, 0, WheelPos * 3);
+    wheelColor = matrix.Color(255 - WheelPos * 3, 0, WheelPos * 3);
   } else if (WheelPos < 170) {
     WheelPos -= 85;
-    return matrix.Color(0, WheelPos * 3, 255 - WheelPos * 3);
+    wheelColor = matrix.Color(0, WheelPos * 3, 255 - WheelPos * 3);
   } else {
     WheelPos -= 170;
-    return matrix.Color(WheelPos * 3, 255 - WheelPos * 3, 0);
+    wheelColor = matrix.Color(WheelPos * 3, 255 - WheelPos * 3, 0);
   }
+
+  // to convert from 24-bit to 16-bit color - NeoMatrix requires 16-bit. perhaps there's a better way to do this.
+  uint32_t bits = wheelColor;
+  uint32_t blue = bits & 0x001F;     // 5 bits blue
+  uint32_t green = bits & 0x07E0;    // 6 bits green
+  uint32_t red = bits & 0xF800;      // 5 bits red
+
+  // Return shifted bits with alpha set to 0xFF
+  return (red << 8) | (green << 5) | (blue << 3) | 0xFF000000;  
 }
 
 
@@ -59,21 +70,10 @@ void rainbowCycle(uint8_t wait) {
 
   for (j = 0; j < 256 * 5; j++) { // 5 cycles of all colors on wheel
     for (i = 0; i < matrix.numPixels(); i++) {
-      matrix.setPixelColor(i, draw565to32(Wheel(((i * 256 / matrix.numPixels()) + j) & 255)));
+      matrix.setPixelColor(i, Wheel(((i * 256 / matrix.numPixels()) + j) & 255));
     }
     matrix.show();
     delay(wait);
   }
 }
 
-// to convert from 24-bit to 16-bit color - NeoMatrix requires 16-bit. prolly better way to do this, can figure out later.
-uint32_t draw565to32(uint16_t color)
-{
-  uint32_t bits = (uint32_t)color;
-  uint32_t blue = bits & 0x001F;     // 5 bits blue
-  uint32_t green = bits & 0x07E0;    // 6 bits green
-  uint32_t red = bits & 0xF800;      // 5 bits red
-
-  // Return shifted bits with alpha set to 0xFF
-  return (red << 8) | (green << 5) | (blue << 3) | 0xFF000000;
-}

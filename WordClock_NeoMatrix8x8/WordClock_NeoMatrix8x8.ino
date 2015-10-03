@@ -159,7 +159,7 @@ void setup() {
     theTime = theTime.unixtime() + 150;
     // DST? If we're in it, let's subtract an hour from the RTC time to keep our DST calculation correct. This gives us 
     // Standard Time which our DST check will add an hour back to if we're in DST. 
-    theTime = theTime.unixtime() - 3600; // If we're not in DST right now, just comment this out!
+    theTime = theTime.unixtime() - 3600; // If we're not in DST right now, just comment this out! If you don't use DST comment this out.
     RTC.adjust(theTime);
   }
 

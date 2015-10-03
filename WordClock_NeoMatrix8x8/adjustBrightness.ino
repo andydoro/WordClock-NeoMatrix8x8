@@ -5,7 +5,7 @@ void adjustBrightness() {
 
   // get time from the RTC
   //DateTime thetime = RTC.now();
-  theTime = calcTheTime(); // takes into account DST
+  theTime = calculateTime(); // takes into account DST
 
 
   //change brightness if it's night time

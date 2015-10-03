@@ -5,7 +5,7 @@ void displayTime(void) {
 
   // get time from the RTC
   //DateTime theTime = RTC.now();
-  theTime = calcTheTime(); // takes into account DST
+  theTime = calculateTime(); // takes into account DST
 
   // serial print current time
   /*

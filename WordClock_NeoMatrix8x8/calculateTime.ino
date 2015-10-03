@@ -15,7 +15,7 @@
  *
  */
 
-DateTime calcTheTime() {
+DateTime calculateTime() {
 
   DateTime RTCTime = RTC.now();
 
