@@ -19,7 +19,7 @@ DateTime calculateTime() {
 
   DateTime RTCTime = RTC.now();
 
-  if (OBSERVEDST == 1) {
+  if (OBSERVE_DST == 1) {
 
     byte DoW = day_of_week(RTCTime.year(), RTCTime.month(), RTCTime.day()); //Get the day of the week. 0 = Sunday, 6 = Saturday
     int previousSunday = RTCTime.day() - DoW;

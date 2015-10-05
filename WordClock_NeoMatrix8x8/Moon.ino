@@ -63,12 +63,12 @@ phases[] = {
   0x01, 0x00
 }
 ,
-leftHalf[]  = { 
+leftHalf[]  = {
   0, 0,  0,  0,  0,  0,  0,  0, 15, 14, 13, 12, 11, 10, 9,
   8, 8,  8,  8,  8,  8,  8,  8,  7,  6,  5,  4,  3,  2, 1
 }
 ,
-rightHalf[] = { 
+rightHalf[] = {
   0, 1,  2,  3,  4,  5,  6,  7,  8,  8,  8,  8,  8,  8, 8,
   8, 9, 10, 11, 12, 13, 14, 15,  0,  0,  0,  0,  0,  0, 0
 };
@@ -99,7 +99,7 @@ void mode_moon() {
 
 
 void blit(const uint8_t *img, int iw, int ih, int sx, int sy, int dx, int dy,
-int w, int h, uint8_t b) {
+          int w, int h, uint8_t b) {
   uint16_t b1;
   uint8_t  shift, x, y;
 
@@ -117,7 +117,7 @@ int w, int h, uint8_t b) {
         clr = clr * 40;  // boost dim pixels
       }
       matrix.drawPixel(dx + x, dy + y,
-      matrix.Color(0, 0, clr)); // draw in blue, pale white pixels look green and funky...
+                       matrix.Color(0, 0, clr)); // draw in blue, pale white pixels look green and funky...
 
     }
   }

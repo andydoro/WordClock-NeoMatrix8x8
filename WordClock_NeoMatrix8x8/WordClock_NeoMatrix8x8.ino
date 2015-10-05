@@ -54,32 +54,30 @@
 
 // define how to write each of the words
 
-// 64-bits is too big! let's use two 32-bit numbers to create masks.
-unsigned long topMask;
-unsigned long bottomMask;
+// 64-bit "mask" for each pixel in the matrix- is it on or off?
+uint64_t mask;
 
 // define masks for each word. we add them with "bitwise or" to generate a mask for the entire "phrase".
-// have to use two different 32-bits numbers, luckily none of the words are spread across top and bottom halves of the NeoMatrix.
-#define MFIVE     topMask |= 0xF000        // these are in hexadecimal
-#define MTEN      topMask |= 0x58000000
-#define AQUARTER  topMask |= 0x80FE0000
-#define TWENTY    topMask |= 0x7E000000
-#define HALF      topMask |= 0xF00
-#define PAST      topMask |= 0x78
-#define TO        topMask |= 0xC
-#define ONE    bottomMask |= 0x43
-#define TWO    bottomMask |= 0xC040
-#define THREE  bottomMask |= 0x1F0000
-#define FOUR   bottomMask |= 0xF0
-#define FIVE   bottomMask |= 0xF0000000
-#define SIX    bottomMask |= 0xE00000
-#define SEVEN  bottomMask |= 0x800F00
-#define EIGHT  bottomMask |= 0x1F000000
-#define NINE   bottomMask |= 0xF
-#define TEN    bottomMask |= 0x1010100
-#define ELEVEN bottomMask |= 0x3F00
-#define TWELVE bottomMask |= 0xF600
-#define ANDYDORO  topMask |= 0x89010087
+#define MFIVE    mask |= 0xF00000000000        // these are in hexadecimal
+#define MTEN     mask |= 0x5800000000000000
+#define AQUARTER mask |= 0x80FE000000000000
+#define TWENTY   mask |= 0x7E00000000000000
+#define HALF     mask |= 0xF0000000000
+#define PAST     mask |= 0x7800000000
+#define TO       mask |= 0xC00000000
+#define ONE      mask |= 0x43
+#define TWO      mask |= 0xC040
+#define THREE    mask |= 0x1F0000
+#define FOUR     mask |= 0xF0
+#define FIVE     mask |= 0xF0000000
+#define SIX      mask |= 0xE00000
+#define SEVEN    mask |= 0x800F00
+#define EIGHT    mask |= 0x1F000000
+#define NINE     mask |= 0xF
+#define TEN      mask |= 0x1010100
+#define ELEVEN   mask |= 0x3F00
+#define TWELVE   mask |= 0xF600
+#define ANDYDORO mask |= 0x8901008700000000
 
 // define pins
 #define NEOPIN 8  // connect to DIN on NeoMatrix 8x8
@@ -110,7 +108,7 @@ int j;   // an integer for the color shifting effect
 // https://en.wikipedia.org/wiki/Daylight_saving_time_by_country
 // Use 1 if you observe DST, 0 if you don't. This is programmed for DST in the US / Canada. If your territory's DST operates differently, 
 // you'll need to modify the code in the calcTheTime() function to make this work properly.
-#define OBSERVEDST 1
+#define OBSERVE_DST 1
 
 
 // Parameter 1 = number of pixels in strip
