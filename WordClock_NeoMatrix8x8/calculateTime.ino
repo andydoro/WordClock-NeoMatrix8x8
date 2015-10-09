@@ -21,6 +21,7 @@ DateTime calculateTime() {
 
   if (OBSERVE_DST == 1) {
 
+    //Get the day of the week. 0 = Sunday, 6 = Saturday
     int previousSunday = RTCTime.day() - RTCTime.dayOfTheWeek();
 
     boolean dst = false; //Assume we're not in DST
