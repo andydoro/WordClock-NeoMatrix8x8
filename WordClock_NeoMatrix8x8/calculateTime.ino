@@ -21,8 +21,7 @@ DateTime calculateTime() {
 
   if (OBSERVE_DST == 1) {
 
-    byte DoW = day_of_week(RTCTime.year(), RTCTime.month(), RTCTime.day()); //Get the day of the week. 0 = Sunday, 6 = Saturday
-    int previousSunday = RTCTime.day() - DoW;
+    int previousSunday = RTCTime.day() - RTCTime.dayOfTheWeek();
 
     boolean dst = false; //Assume we're not in DST
     if (RTCTime.month() > 3 && RTCTime.month() < 11) dst = true; //DST is happening!
@@ -58,17 +57,4 @@ DateTime calculateTime() {
   Serial.println();
 
   return RTCTime;
-}
-
-
-//Given the current year/month/day
-//Returns 0 (Sunday) through 6 (Saturday) for the day of the week
-//From: http://en.wikipedia.org/wiki/Calculating_the_day_of_the_week
-//This function assumes the month from the caller is 1-12
-char day_of_week(int year, int month, int day)
-{
-  //Devised by Tomohiko Sakamoto in 1993, it is accurate for any Gregorian date:
-  static int t[] = { 0, 3, 2, 5, 0, 3, 5, 1, 4, 6, 2, 4  };
-  year -= month < 3;
-  return (year + year / 4 - year / 100 + year / 400 + t[month - 1] + day) % 7;
 }
