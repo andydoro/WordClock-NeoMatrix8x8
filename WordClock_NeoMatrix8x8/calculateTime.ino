@@ -20,26 +20,7 @@ DateTime calculateTime() {
   DateTime RTCTime = RTC.now();
 
   if (OBSERVE_DST == 1) {
-
-    //Get the day of the week. 0 = Sunday, 6 = Saturday
-    int previousSunday = RTCTime.day() - RTCTime.dayOfTheWeek();
-
-    boolean dst = false; //Assume we're not in DST
-    if (RTCTime.month() > 3 && RTCTime.month() < 11) dst = true; //DST is happening!
-
-    //In March, we are DST if our previous Sunday was on or after the 8th.
-    if (RTCTime.month() == 3)
-    {
-      if (previousSunday >= 8) dst = true;
-    }
-    //In November we must be before the first Sunday to be dst.
-    //That means the previous Sunday must be before the 1st.
-    if (RTCTime.month() == 11)
-    {
-      if (previousSunday <= 0) dst = true;
-    }
-
-    if (dst == true) {
+    if (checkDst() == true) {
       RTCTime = RTCTime.unixtime() + 3600;  // add 1 hour or 3600 seconds to the time
     }
   }
@@ -59,3 +40,30 @@ DateTime calculateTime() {
 
   return RTCTime;
 }
+
+boolean checkDst() {
+
+  DateTime RTCTime = RTC.now();
+
+  //Get the day of the week. 0 = Sunday, 6 = Saturday
+  int previousSunday = RTCTime.day() - RTCTime.dayOfTheWeek();
+
+  boolean dst = false; //Assume we're not in DST
+  if (RTCTime.month() > 3 && RTCTime.month() < 11) dst = true; //DST is happening!
+
+  //In March, we are DST if our previous Sunday was on or after the 8th.
+  if (RTCTime.month() == 3)
+  {
+    if (previousSunday >= 8) dst = true;
+  }
+  //In November we must be before the first Sunday to be dst.
+  //That means the previous Sunday must be before the 1st.
+  if (RTCTime.month() == 11)
+  {
+    if (previousSunday <= 0) dst = true;
+  }
+
+  return dst;
+
+}
+
