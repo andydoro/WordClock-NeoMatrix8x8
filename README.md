@@ -36,6 +36,8 @@ Wiring:
  
 
 grid pattern:
+-------
+
  ```
  A T W E N T Y D
  Q U A R T E R Y
