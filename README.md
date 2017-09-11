@@ -9,6 +9,7 @@ A word clock which uses NeoPixel RGB LEDs for a color shifting effect.
 For more information, follow this guide: https://learn.adafruit.com/neomatrix-8x8-word-clock/
 
 Hardware:
+-------
  
  - Trinket Pro 5V (should work with other Arduino-compatibles with minor modifications) https://www.adafruit.com/product/2000
  - DS1307 RTC breakout https://www.adafruit.com/products/264
@@ -16,6 +17,7 @@ Hardware:
  - laser cut faceplate & enclosure
  
 Software:
+-------
  
 This code requires the following libraries:
  
@@ -26,6 +28,7 @@ This code requires the following libraries:
 
 
 Wiring:
+-------
 
  - Solder DS1307 breakout to Trinket Pro, A2 to GND, A3 to PWR, A4 to SDA, A5 to SCL  
    If you leave off / clip the unused SQW pin on the RTC breakout, the breakout can sit right on top of the Trinket Pro for a compact design! It'll be difficult to reach the Trinket Pro reset button, but you can activate the bootloader by plugging in the USB.
