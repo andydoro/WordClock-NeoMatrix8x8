@@ -81,7 +81,7 @@ uint8_t phase = 0;
 
 void mode_moon() {
 
-  DateTime theTime = RTC.now();
+  //DateTime theTime = RTC.now();
   phase = (uint8_t) (((theTime.unixtime() - NEW_MOON) % LP) / (24L * 3600L));
 
   //uint8_t  b = 255; //(uint8_t)pgm_read_byte(&fade);

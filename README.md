@@ -12,7 +12,7 @@ Hardware:
 -------
  
  - Trinket Pro 5V (should work with other Arduino-compatibles with minor modifications) https://www.adafruit.com/product/2000
- - DS1307 RTC breakout https://www.adafruit.com/products/264
+ - DS1307 RTC breakout https://www.adafruit.com/products/3296
  - NeoPixel NeoMatrix 8x8 https://www.adafruit.com/products/1487
  - laser cut faceplate & enclosure
  
@@ -22,6 +22,7 @@ Software:
 This code requires the following libraries:
  
  - RTClib https://github.com/adafruit/RTClib
+ - DST_RTC https://github.com/andydoro/DST_RTC
  - Adafruit_GFX https://github.com/adafruit/Adafruit-GFX-Library
  - Adafruit_NeoPixel https://github.com/adafruit/Adafruit_NeoPixel
  - Adafruit_NeoMatrix https://github.com/adafruit/Adafruit_NeoMatrix
