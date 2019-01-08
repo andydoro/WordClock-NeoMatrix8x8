@@ -11,9 +11,9 @@ For more information, follow this guide: https://learn.adafruit.com/neomatrix-8x
 Hardware:
 -------
  
- - Trinket Pro 5V (should work with other Arduino-compatibles with minor modifications) https://www.adafruit.com/product/2000
- - DS1307 RTC breakout https://www.adafruit.com/products/3296
- - NeoPixel NeoMatrix 8x8 https://www.adafruit.com/products/1487
+ - [Trinket Pro 5V](https://www.adafruit.com/product/2000) (should work with other Arduino-compatibles with minor modifications) 
+ - [DS1307 RTC breakout](https://www.adafruit.com/products/3296)
+ - [NeoPixel NeoMatrix 8x8](https://www.adafruit.com/products/1487)
  - laser cut faceplate & enclosure
  
 Software:
@@ -21,11 +21,11 @@ Software:
  
 This code requires the following libraries:
  
- - RTClib https://github.com/adafruit/RTClib
- - DST_RTC https://github.com/andydoro/DST_RTC
- - Adafruit_GFX https://github.com/adafruit/Adafruit-GFX-Library
- - Adafruit_NeoPixel https://github.com/adafruit/Adafruit_NeoPixel
- - Adafruit_NeoMatrix https://github.com/adafruit/Adafruit_NeoMatrix
+ - [RTClib](https://github.com/adafruit/RTClib)
+ - [DST_RTC](https://github.com/andydoro/DST_RTC)
+ - [Adafruit_GFX](https://github.com/adafruit/Adafruit-GFX-Library)
+ - [Adafruit_NeoPixel](https://github.com/adafruit/Adafruit_NeoPixel)
+ - [Adafruit_NeoMatrix](https://github.com/adafruit/Adafruit_NeoMatrix)
 
 
 Wiring:
@@ -51,6 +51,6 @@ grid pattern:
  ```
  
 Acknowledgements:
-  - Thanks Dano for faceplate / 3D models & project inspiration! https://github.com/danowall
+  - Thanks [Dano](https://github.com/danowall) for faceplate / 3D models & project inspiration! 
  
 
