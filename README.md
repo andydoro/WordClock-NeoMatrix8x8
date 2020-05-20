@@ -1,12 +1,13 @@
  WORD CLOCK - NeoMatrix 8x8 Desktop Edition
 ================
- by Andy Doro & Dano Wall
+ by [Andy Doro](https://andydoro.com/) & [Dano Wall](https://github.com/danowall)
  
 https://andydoro.com/wordclockdesktop/
 
+[Adafruit Learn Guide](https://learn.adafruit.com/neomatrix-8x8-word-clock/)
+
 A word clock which uses NeoPixel RGB LEDs for a color shifting effect.
 
-For more information, follow this guide: https://learn.adafruit.com/neomatrix-8x8-word-clock/
 
 Hardware:
 -------
