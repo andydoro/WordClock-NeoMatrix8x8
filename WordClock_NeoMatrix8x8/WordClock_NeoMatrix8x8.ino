@@ -100,6 +100,16 @@ uint64_t mask;
 #define FLASHDELAY 250  // delay for startup "flashWords" sequence
 #define SHIFTDELAY 100   // controls color shifting speed
 
+/* 
+ *  Over time, the RTC may loose accuracy. Since the Trinket
+ *  doesn't have a Wi-Fi connection, it can't reset its own clock
+ *  periodically. When this happens, uncomment the following line 
+ *  and deploy to the trinket. It will reset the RTC to the compile
+ *  date and time, giving the clock a more accurate time. Once that's
+ *  done, comment out the line again, build, and deploy the sketch to 
+ *  the trinket to reset the sketch to its original behavior. 
+*/
+//#define RESETCLOCK
 
 RTC_DS1307 RTC; // Establish clock object
 DST_RTC dst_rtc; // DST object
@@ -156,19 +166,14 @@ void setup() {
   Wire.begin();  // Begin I2C
   RTC.begin();   // begin clock
 
-  if (! RTC.isrunning()) {
+#ifdef RESETCLOCK
+  setTime();
+#else
+  if ( !RTC.isrunning()) {
     Serial.println("RTC is NOT running!");
-    // following line sets the RTC to the date & time this sketch was compiled
-    RTC.adjust(DateTime(__DATE__, __TIME__));
-    // DST? If we're in it, let's subtract an hour from the RTC time to keep our DST calculation correct. This gives us
-    // Standard Time which our DST check will add an hour back to if we're in DST.
-    DateTime standardTime = RTC.now();
-    if (dst_rtc.checkDST(standardTime) == true) { // check whether we're in DST right now. If we are, subtract an hour.
-      standardTime = standardTime.unixtime() - 3600;
-    }
-    RTC.adjust(standardTime);
+    setTime();
   }
-
+#endif
 
   matrix.begin();
   matrix.setBrightness(DAYBRIGHTNESS);
@@ -196,7 +201,17 @@ void loop() {
 
   //mode_moon(); // uncomment to show moon mode instead!
 
-
 }
 
-
+void setTime() {
+  Serial.println("Resetting RTC");
+  // following line sets the RTC to the date & time this sketch was compiled
+  RTC.adjust(DateTime(__DATE__, __TIME__));
+  // DST? If we're in it, let's subtract an hour from the RTC time to keep our DST calculation correct. This gives us
+  // Standard Time which our DST check will add an hour back to if we're in DST.
+  DateTime standardTime = RTC.now();
+  if (dst_rtc.checkDST(standardTime) == true) { // check whether we're in DST right now. If we are, subtract an hour.
+    standardTime = standardTime.unixtime() - 3600;
+  }
+  RTC.adjust(standardTime);
+}
