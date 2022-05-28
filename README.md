@@ -9,7 +9,7 @@ https://andydoro.com/wordclockdesktop/
 A word clock which uses NeoPixel RGB LEDs for a color shifting effect.
 
 
-Hardware:
+Hardware
 -------
  
  - [Trinket Pro 5V](https://www.adafruit.com/product/2000) (should work with other Arduino-compatibles with minor modifications) 
@@ -17,7 +17,7 @@ Hardware:
  - [NeoPixel NeoMatrix 8x8](https://www.adafruit.com/products/1487)
  - laser cut faceplate & enclosure
  
-Software:
+Software
 -------
  
 This code requires the following libraries:
@@ -29,7 +29,7 @@ This code requires the following libraries:
  - [Adafruit_NeoMatrix](https://github.com/adafruit/Adafruit_NeoMatrix)
 
 
-Wiring:
+Wiring
 -------
 
  - Solder DS1307 breakout to Trinket Pro, A2 to GND, A3 to PWR, A4 to SDA, A5 to SCL  
@@ -37,7 +37,7 @@ Wiring:
  - Solder NeoMatrix 5V to Trinket 5V, GND to GND, DIN to Trinket Pro pin 8.
  
 
-grid pattern:
+grid pattern
 -------
 
  ```
