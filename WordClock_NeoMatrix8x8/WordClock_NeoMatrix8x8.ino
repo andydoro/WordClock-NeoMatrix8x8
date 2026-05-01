@@ -104,10 +104,6 @@ uint64_t mask;
 RTC_DS1307 RTC; // Establish clock object
 DST_RTC dst_rtc(0); // DST object 0 indicates US DST ruleset
 
-// Define US or EU rules for DST comment out as required. More countries could be added with different rules in DST_RTC.cpp
-const char rulesDST[] = "US"; // US DST rules
-// const char rulesDST[] = "EU";   // EU DST rules
-
 DateTime theTime; // Holds current clock time
 
 int j;   // an integer for the color shifting effect
